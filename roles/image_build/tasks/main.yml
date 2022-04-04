@@ -1,0 +1,41 @@
+---
+
+- name: Copying Dockerfile
+  copy:
+    src: roles/image_build/files/Dockerfile
+    dest: /root/image_build/
+  tags: build
+
+- name: Copying index file
+  copy:
+    src: roles/image_build/files/index.html
+    dest: /root/image_build/
+  tags: build
+
+- name: Building image
+  docker_image:
+    name: "{{ image_name }}"
+    build:
+      path: /root/image_build/
+    source: build
+  tags: build
+
+- name: Starting "{{ cont_name }}" container
+  docker_container:
+    name: "{{ cont_name }}"
+    image: "{{ image_name }}"
+    state: started
+    ports:
+      - "{{ port_num }}"
+  tags: dockrun
+
+
+- name: Restarting "{{ cont_name }}" container
+  docker_container:
+    name: "{{ cont_name }}"
+    image: "{{ image_name }}"
+    state: started
+    restart: yes
+    ports:
+      - "{{ port_num }}"
+  tags: restdock

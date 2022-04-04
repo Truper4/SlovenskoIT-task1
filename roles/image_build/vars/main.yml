@@ -1,0 +1,10 @@
+---
+
+#Name:tag of the image
+image_name: web:v1
+
+#Port for the container
+port_num: "80:80"
+
+#Name of the container
+cont_name: web_srv
