@@ -7,11 +7,10 @@
     state: absent
 
 - name: Install multi python packages
-  pip:
+  apt:
     name:
-      - requests
-      - docker
-
+      - python3-docker
+      - python3-requests
 
 - name: Ensure dependencies are installed.
   apt:
