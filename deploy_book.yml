@@ -1,0 +1,18 @@
+---
+- hosts: vladi
+  user: root
+  tasks:
+  - name: Using user_deploy role
+    include_role:
+        name: user_deploy
+    tags: user_deploy
+
+  - name: Using docker_install role
+    include_role:
+        name: docker_install
+    tags: docker_install
+
+  - name: Using image_build role
+    include_role:
+        name: image_build
+    tags: [ build, dockrun, restdock ]
