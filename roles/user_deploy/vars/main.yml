@@ -1,0 +1,10 @@
+---
+
+# User's name
+user_name: deploy
+
+# Additional groups
+user_groups: []
+
+# User's shell
+user_shell: /bin/bash

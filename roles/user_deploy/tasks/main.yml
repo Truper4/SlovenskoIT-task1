@@ -1,0 +1,9 @@
+---
+
+- name: Create deploy user
+  user:
+    append: yes
+    groups: "{{ (user_groups | join(',')) }}"
+    name: "{{ user_name }}"
+    shell: "{{ user_shell }}"
+    state: present
